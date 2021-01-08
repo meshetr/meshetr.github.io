@@ -1,3 +1,5 @@
+const sanitize = str =>  $("<div>").text(str).html()
+
 $( document ).ready((async function(){
     const response = await fetch("http://34.120.16.63/catalogue/api/v1/ads");
     const data = await response.json();
@@ -5,11 +7,11 @@ $( document ).ready((async function(){
 `   <div class="row">
         <div class="card w-100 m-3">
             <div class="card-header">
-                <h5 class="card-title">`+ad.title+`</h5>
+                <h5 class="card-title">`+sanitize(ad.title)+`</h5>
             </div>
             <div class="card-body">
-                <p class="card-text">`+ad.description+`</p>
-                <a href="ad.html?`+ad.idAd+`" class="btn btn-primary">Več...</a>  <h4 class="float-right">`+ad.price.toFixed(2)+`€</h4>
+                <p class="card-text">`+sanitize(ad.description)+`</p>
+                <a href="ad.html?`+sanitize(ad.idAd)+`" class="btn btn-primary">Več...</a>  <h4 class="float-right">`+ad.price.toFixed(2)+`€</h4>
             </div>
         </div>
     </div>
