@@ -1,4 +1,4 @@
-(async function(){
+$( document ).ready((async function(){
     const response = await fetch("http://34.120.16.63/catalogue/api/v1/ads");
     const data = await response.json();
     data.forEach(ad => $("#seznam-oglasov").append(
@@ -14,4 +14,4 @@
         </div>
     </div>
 `    ));
-})()
+})());
